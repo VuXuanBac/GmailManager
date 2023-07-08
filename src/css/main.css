@@ -1,0 +1,207 @@
+/* ======================= HEADER ======================== */
+header {
+    /* position: sticky;
+    top: 0px;
+    z-index: 100; */
+    background-color: white;
+    border-bottom: 1px solid green;
+}
+
+#title {
+    /* text-align: center; */
+    width: 50%;
+    margin: auto;
+    border-bottom: 2px solid black;
+    font-size: x-large;
+}
+
+#status {
+    margin: auto;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 80px;
+    overflow: hidden;
+}
+
+#btn-login-logout {
+    width: 170px;
+}
+
+/* ======================= MAIN ======================== */
+main {
+    display: flex;
+    margin: auto;
+    padding: 10px;
+    width: 80%;
+    position: relative;
+}
+
+main .content-container {
+    flex: 4;
+}
+
+main nav {
+    flex: 1;
+}
+
+nav li {
+    width: 80%;
+}
+
+/* ======================= DATA ======================== */
+
+
+.data-field {
+    display: flex;
+    margin: 7px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.data-title {
+    display: block;
+    /* text-align: center; */
+    border-radius: 7px;
+    border: 1px solid black;
+    flex: 0 1 70px;
+    padding: 4px 3px;
+    margin-right: 3%;
+    /* line-height: 100%; */
+}
+
+.data-value {
+    border: 0;
+    border-bottom: 1px solid black;
+    padding: 5px 7px;
+    flex: 1 1 auto;
+    /* initial width base on its content, if can shrink, must shrink, if can grow, must grow*/
+    /* appearance: none; */
+}
+
+
+/* ========================== Table ============================ */
+table {
+    /* border-collapse: separate;
+    border-spacing: 2px; */
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+}
+
+th,
+td {
+    /* display: block; */
+    padding: 10px;
+    margin: 0 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+thead tr {
+    background-color: var(--table-color);
+    color: white;
+    display: flex;
+    /* position: relative; */
+}
+
+tbody {
+    display: block;
+    max-height: 700px;
+    overflow: auto;
+}
+
+tbody tr {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+tbody tr:hover {
+    color: var(--table-color);
+}
+
+tbody tr:active {
+    font-weight: bold;
+}
+
+.col-from,
+.col-to {
+    /* width: 15%; */
+    flex: 3;
+}
+
+.col-time {
+    text-align: right;
+    /* width: 10%; */
+    flex: 2;
+}
+
+.col-subject {
+    text-align: left;
+    /* width: 55%; */
+    flex: 7;
+}
+
+.col-controls {
+    /* width: 5%; */
+    text-align: center;
+    flex: 1;
+}
+
+tr.unread {
+    font-style: italic;
+    background-color: #fffd0045;
+}
+
+/* ====================== Attachments & Labels ===================== */
+.attach-item {
+    cursor: pointer;
+    background-color: rgb(210, 232, 232);
+    color: blue;
+}
+
+.attach-item:hover {
+    background-color: gold !important;
+    /* color: green; */
+}
+
+.attach-item:active {
+    /* box-shadow: 3px 3px 3px #ccc; */
+    font-weight: bold;
+}
+
+.label-item {
+    background-color: #32ffb5;
+    color: #fff900;
+}
+
+/* .col .btn {
+    margin: 0px !important;
+    flex: 1;
+} */
+
+/* ========================== MESSAGE ============================ */
+/*
+.content-container.write .onwrite {
+    display: initial;
+}
+
+.content-container.write .onread {
+    display: none;
+}
+
+.content-container .onwrite {
+    display: none;
+}
+
+.content-container .onread {
+    display: initial;
+} */
+
+/* ======================= OTHER ======================== */

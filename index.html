@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gmail Client</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="src/css/custom.css">
+    <link rel="stylesheet" href="src/css/main.css">
+</head>
+
+<body>
+    <header>
+        <h1 id="title">Hello! This is a simple program for reading and composing email with Gmail</h1>
+        <section id="status" class="btn-container flex-row">
+            <p id="notify" class="info">Hello</p>
+            <span id="btn-login-logout" class="btn btn-round btn-main">Click here to login</span>
+            <fieldset class="data-field">
+                <input type="checkbox" name="remember-me" id="remember-me">
+                <label for="remember-me">Remember Me</label>
+            </fieldset>
+            <input type="hidden" id="api-key" value="">
+            <input type="hidden" id="client-id" value="">
+        </section>
+    </header>
+    <main style="display: none;">
+        <article class="content-container">
+            <section id="user-info" class="card">
+                <fieldset class="data-field">
+                    <label for="user-address" class="data-title">Account</label>
+                    <span class="data-value" id="user-address"></span>
+                </fieldset>
+                <fieldset class="data-field">
+                    <label for="user-statistic" class="data-title">Statistic</label>
+                    <span class="data-value" id="user-statistic"></span>
+                </fieldset>
+            </section>
+            <!-- <section class="card">
+                <ul class="btn-container flex-row">
+                    <li>
+                        <fieldset class="data-field">
+                            <input class="data-value" name="from" id="mail-search" type="text" style="width: 300px;">
+                            <span class="btn btn-icon" title="Search" id="btn-search" style="color: black;">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </span>
+                        </fieldset>
+                    </li>
+            <li class="split-flex"></li>
+            <li class="btn btn-icon" title="Next" id="btn-go-prev" style="color: green;">
+                <i class="fa-solid fa-caret-left"></i>
+            </li>
+            <li style="margin: 0 20px;">
+                <fieldset class="data-field">
+                    <span class="data-value">Page</span>
+                    <input class="data-value" name="from" id="mail-search" type="number" min="1" value="1" readonly
+                        style="width: 35px;">
+                </fieldset>
+            </li>
+
+            <li class="btn btn-icon" title="Next" id="btn-go-next" style="color: green;">
+                <i class="fa-solid fa-caret-right"></i>
+            </li>
+            </ul>
+            </section> -->
+            <table class="card">
+                <thead>
+                    <tr>
+                        <!-- <th class="col-header col-message-id hidden">ID</th>
+                        <th class="col-header col-thread-id hidden">Thread ID</th> -->
+                        <th class="col-header col-from">From</th>
+                        <th class="col-header col-to">To</th>
+                        <th class="col-header col-subject">Subject</th>
+                        <th class="col-header col-time">Time</th>
+                        <th class="col-header col-controls"></th>
+                    </tr>
+                </thead>
+                <tbody id="mail-list">
+                    <!-- <tr id="row-placeholder"></tr> -->
+                </tbody>
+            </table>
+        </article>
+        <div class="modal">
+            <input type="file" id="attachment-chooser" multiple class="hidden">
+
+            <div class="modal-content card">
+                <div class="modal-header">
+                    <span>Message</span>
+                    <ul id="modal-labels-container" class="item-container flex-row container-one-line"></ul>
+                    <span class="btn btn-icon" id="btn-close-modal">&times;</span>
+                </div>
+                <article class="content-container modal-body">
+                    <section id="info" class="card">
+                        <fieldset class="data-field">
+                            <label for="mail-from" class="data-title">From</label>
+                            <input class="data-value" id="mail-from" name="From" type="text" value="">
+                        </fieldset>
+                        <fieldset class="data-field">
+                            <label for="mail-to" class="data-title">To</label>
+                            <input class="data-value" id="mail-to" name="To" type="text" value="" required>
+                        </fieldset>
+                        <fieldset class="data-field">
+                            <label for="mail-cc" class="data-title">Cc</label>
+                            <input class="data-value" id="mail-cc" name="Cc" type="text" value="">
+                        </fieldset>
+                        <fieldset class="data-field">
+                            <label for="mail-bcc" class="data-title">Bcc</label>
+                            <input class="data-value" id="mail-bcc" name="Bcc" type="text" value="">
+                        </fieldset>
+                    </section>
+                    <section class="card">
+
+                        <ul id="modal-btn-container" class="btn-container flex-row"></ul>
+                        <hr>
+                        <ul id="modal-attachment-container" class="item-container flex-row container-multi-lines"></ul>
+                    </section>
+                    <!-- <span class="splitter"></span> -->
+                    <section id="content" class="card">
+                        <fieldset class="data-field">
+                            <label for="mail-subject" class="data-title">Subject</label>
+                            <input class="data-value" id="mail-subject" name="Subject" type="text" value="">
+                        </fieldset>
+
+                        <fieldset class="data-field">
+                            <textarea class="data-value" id="mail-content" name="Text" contenteditable="true">
+                            </textarea>
+                        </fieldset>
+                    </section>
+                </article>
+            </div>
+        </div>
+        <nav>
+            <ul class="btn-container flex-column">
+                <li class="btn btn-round btn-main" id="btn-compose">Compose</li>
+                <!-- <li class="btn btn-round btn-main" id="btn-view-inbox">Inbox</li>
+                <li class="btn btn-round btn-main" id="btn-view-trash">Trash</li>
+                <li class="btn btn-round btn-main" id="btn-view-spam">Spam</li> -->
+            </ul>
+        </nav>
+    </main>
+    <!-- <script src="usinglibrary.js" type="text/javascript"></script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script> -->
+
+    <script src="src/js/utils.js" type="text/javascript"></script>
+
+    <script src="src/js/mime.js" type="text/javascript"></script>
+    <script src="src/js/message.js" type="text/javascript"></script>
+
+    <script src="src/js/request.js" type="text/javascript"></script>
+    <script src="src/js/auth.js" type="text/javascript"></script>
+    <script src="src/js/api.js" type="text/javascript"></script>
+
+    <script src="src/js/modal.js" type="text/javascript"></script>
+    <script src="src/js/maillist.js" type="text/javascript"></script>
+    <script src="src/js/mailbox.js" type="text/javascript"></script>
+
+    <script src="src/js/main.js" type="text/javascript"></script>
+
+    <!-- <script src="image.js" type="text/javascript"></script> -->
+</body>
+
+</html>

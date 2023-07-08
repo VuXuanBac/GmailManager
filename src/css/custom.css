@@ -1,0 +1,226 @@
+:root {
+    --primary-color: #4d00ff;
+    --primary-text-color: white;
+    --secondary-color: orange;
+    --table-color: #4f73df;
+}
+
+* {
+    text-align: center;
+
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    text-align: left;
+}
+
+input[type="number"] {
+    text-align: right;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+textarea {
+    text-align: left;
+    resize: none;
+    overflow-y: auto;
+    height: auto;
+}
+
+/* ========================== ODDS and ENDS ========================= */
+
+.success {
+    color: rgb(40, 180, 5);
+}
+
+.info {
+    color: blue;
+}
+
+
+.split-flex {
+    flex: 1;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ========================== Containers ============================ */
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    /* color: var(--secondary-color); */
+}
+
+.content-container {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    max-height: 100px;
+}
+
+.container-multi-lines {
+    flex-wrap: wrap;
+    overflow-y: auto;
+
+}
+
+.container-one-line {
+    overflow-x: auto;
+}
+
+/* ========================== Controls ============================ */
+.card {
+    border-radius: 7px;
+    box-shadow: 7px 7px 5px #ccc;
+    padding: 10px 10px;
+    background-color: white;
+    /* background-color: aqua; */
+    margin: 0 10px 15px;
+    overflow-x: hidden;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.btn-icon {
+    /* margin-left: 30px; */
+    font-size: 12pt;
+}
+
+.btn+.btn-icon {
+    margin-left: 5%;
+}
+
+/* .btn-icon:hover {
+    color: currentColor !important;
+} */
+
+.btn-icon:active {
+    color: currentColor !important;
+}
+
+.btn-round {
+    border-radius: 15px;
+    border: 1px solid black;
+    height: 30px;
+    margin: 5px auto 5px;
+    min-width: 100px;
+    line-height: 30px;
+    background-color: deepskyblue;
+    color: white;
+}
+
+.btn-round:hover {
+    background-color: gold !important;
+    /* color: green; */
+}
+
+.btn-round:active {
+    /* box-shadow: 3px 3px 3px #ccc; */
+    color: blue;
+    box-shadow: none;
+}
+
+.btn-main {
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    /* height */
+    box-shadow: 3px 3px 3px #ccc;
+}
+
+.item-round {
+    border-radius: 15px;
+    border: none;
+    height: 20px;
+    margin: 5px 5px;
+    padding: 2px 7px;
+    /* text-align: center; */
+    line-height: 20px;
+    font-size: 10pt;
+}
+
+/* ========================== Modal ============================ */
+
+/* Modal cover full screen */
+.modal {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #aaaa;
+    z-index: 100;
+    display: none;
+    font-size: 10pt;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-header {
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    border-bottom: 1px solid black;
+    font-size: large;
+    font-weight: bold;
+}
+
+#mail-subject {
+    font-weight: bold;
+    font-size: 150%;
+}
+
+#mail-content {
+    max-height: 300px;
+    min-height: 50px;
+}
+
+.modal .btn-container {
+    padding: 0 5%;
+}
